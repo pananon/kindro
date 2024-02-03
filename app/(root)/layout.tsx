@@ -20,22 +20,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-        <html lang="en">
-            <body className={`${inter.className} bg-dark-1`}>
-              <Topbar />
-              <main>
-                <LeftSidebar />
-                <section className="main-container">
-                  <div className="w-full max-w-4xl">
-                      {children}
-                  </div>
-                </section>
-                <RightSidebar />
-              </main>
-              <Bottombar/>
-            </body>
-        </html>
-  </ClerkProvider>
+    <ClerkProvider
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
+      <html lang="en">
+        <body className={`${inter.className} bg-dark-1`}>
+          <Topbar />
+          <main className="flex flex-row">
+            <LeftSidebar />
+            <section className="main-container">
+              <div className="w-full max-w-4xl">{children}</div>
+            </section>
+            <RightSidebar />
+          </main>
+          <Bottombar />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
